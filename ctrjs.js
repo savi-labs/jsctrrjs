@@ -1,1 +1,77 @@
-const _0x4522fc=_0x33ef;(function(_0x4c5d1e,_0xdee7f5){const _0x423867=_0x33ef,_0x16714d=_0x4c5d1e();while(!![]){try{const _0x14da96=parseInt(_0x423867(0x11e))/0x1*(parseInt(_0x423867(0x117))/0x2)+-parseInt(_0x423867(0x119))/0x3+parseInt(_0x423867(0x108))/0x4*(-parseInt(_0x423867(0x118))/0x5)+-parseInt(_0x423867(0x112))/0x6*(-parseInt(_0x423867(0x121))/0x7)+-parseInt(_0x423867(0x11d))/0x8+parseInt(_0x423867(0x11f))/0x9+-parseInt(_0x423867(0x10f))/0xa*(parseInt(_0x423867(0x113))/0xb);if(_0x14da96===_0xdee7f5)break;else _0x16714d['push'](_0x16714d['shift']());}catch(_0x532171){_0x16714d['push'](_0x16714d['shift']());}}}(_0x41ee,0x7e1a7));function _0x41ee(){const _0x264b27=['[dynamic-counter]','innerText','decimal','1721048sTKdHw','3XUksTz','803259OMHhUD','suffix','161BOwgGK','length','filter','8348MJdlJN','prefix','push','getAttribute','split','number','groups','60fePPic','toString','CountUp','174342HzDwky','825319dnNgtk','map','querySelectorAll','exec','515908DvSaOK','265DKEizr','716967urWhwo'];_0x41ee=function(){return _0x264b27;};return _0x41ee();}const getDecimalSeparator=_0x25bf88=>{const _0x35dfeb=_0x33ef;let _0x2b33db=_0x25bf88['getAttribute'](_0x35dfeb(0x11c));if(_0x2b33db===''||!_0x2b33db)return'.';return _0x2b33db;},getNumberSeparator=_0x464bab=>{const _0x1c9ae4=_0x33ef;if(_0x464bab[_0x1c9ae4(0x10b)](_0x1c9ae4(0x11c))===',')return'.';return',';},els=document[_0x4522fc(0x115)](_0x4522fc(0x11a));function _0x33ef(_0x1534cc,_0x40b40f){const _0x41ee32=_0x41ee();return _0x33ef=function(_0x33ef5d,_0x7bdb0c){_0x33ef5d=_0x33ef5d-0x106;let _0x22d8f2=_0x41ee32[_0x33ef5d];return _0x22d8f2;},_0x33ef(_0x1534cc,_0x40b40f);}let testStrings=[];els['forEach'](_0x2bdaff=>{const _0x4985d4=_0x4522fc;testStrings[_0x4985d4(0x10a)]({'id':0x1,'el':_0x2bdaff,'text':_0x2bdaff[_0x4985d4(0x11b)],'prefix':null,'suffix':null,'number':null,'decimal':getDecimalSeparator(_0x2bdaff),'separator':getNumberSeparator(_0x2bdaff)});});const regex=/^(?<prefix>[^\d])(?<number>[0-9]+(?:[,.][0-9]+)?)(?<suffix>[^\d])$/;var updatedArray=testStrings[_0x4522fc(0x107)](_0x5be2fd=>{const _0x1bad33=_0x4522fc,_0xb902a1=regex[_0x1bad33(0x116)](_0x5be2fd['text']);return _0xb902a1?(_0x5be2fd['prefix']=_0xb902a1?.[_0x1bad33(0x10e)]?.[_0x1bad33(0x109)],_0x5be2fd[_0x1bad33(0x10d)]=parseFloat(_0xb902a1?.[_0x1bad33(0x10e)]?.[_0x1bad33(0x10d)]),_0x5be2fd['suffix']=_0xb902a1?.['groups']?.[_0x1bad33(0x120)],!![]):![];});testStrings=updatedArray;const counterMetrics=testStrings[_0x4522fc(0x114)](({el:_0x45ed8b,text:_0x33e155,format:_0x303d9d,separator:_0x55e146,prefix:_0x1215ce,suffix:_0x426a9d,number:_0x3d5f28,decimal:_0x17a25b})=>{const _0x273895=_0x4522fc;let _0x58e50e;_0x3d5f28%0x1!==0x0?_0x58e50e=_0x3d5f28[_0x273895(0x110)]()[_0x273895(0x10c)]('.')[0x1][_0x273895(0x106)]:_0x58e50e=0x0;const _0x44e888={'target':_0x45ed8b,'startVal':0x0,'endVal':_0x3d5f28,'duration':0x3,'decimalPlaces':_0x58e50e,'prefix':_0x1215ce,'suffix':_0x426a9d,'separator':_0x55e146,'decimal':_0x17a25b};return _0x44e888;}),metrics=counterMetrics;function createCountUpInstance({target:_0x48cedf,..._0x27b0dc}){const _0x2ac7bb=_0x4522fc;return new countUp[(_0x2ac7bb(0x111))](_0x48cedf,_0x27b0dc['endVal'],{'enableScrollSpy':!![],'scrollSpyOnce':!![],..._0x27b0dc});}metrics['forEach'](_0x7f0c75=>{createCountUpInstance(_0x7f0c75);});
+const getDecimalSeparator = (el) => {
+  let dec = el.getAttribute("decimal");
+  if (dec === "" || !dec) return ".";
+  return dec;
+};
+
+const getNumberSeparator = (el) => {
+  if (el.getAttribute("decimal") === ",") return ".";
+  return ",";
+};
+
+const els = document.querySelectorAll("[dynamic-counter]");
+let testStrings = [];
+els.forEach((el) => {
+  testStrings.push({
+    id: 1,
+    el: el,
+    text: el.innerText,
+    prefix: null,
+    suffix: null,
+    number: null,
+    decimal: getDecimalSeparator(el),
+    separator: getNumberSeparator(el)
+  });
+});
+const regex = /^(?<prefix>[^\d]*)(?<number>[0-9]+(?:[,.][0-9]+)?)(?<suffix>[^\d]*)$/;
+var updatedArray = testStrings.filter((str) => {
+  const match = regex.exec(str.text);
+  if (match) {
+    str.prefix = match?.groups?.prefix;
+    str.number = parseFloat(match?.groups?.number);
+    str.suffix = match?.groups?.suffix;
+    return true; // Include the element in the updated array
+  } else {
+    return false; // Exclude the element from the updated array
+  }
+});
+testStrings = updatedArray;
+const counterMetrics = testStrings.map(
+  ({ el, text, format, separator, prefix, suffix, number, decimal }) => {
+    let decimalPlaces;
+    if (number % 1 !== 0) {
+      decimalPlaces = number.toString().split(".")[1].length;
+    } else {
+      decimalPlaces = 0;
+    }
+    const obj = {
+      target: el,
+      startVal: 0,
+      endVal: number,
+      duration: 3,
+      decimalPlaces,
+      prefix,
+      suffix,
+      separator,
+      // useGrouping: false,
+      decimal
+    };
+
+    return obj;
+  }
+);
+
+const metrics = counterMetrics;
+
+function createCountUpInstance({ target, ...options }) {
+  return new countUp.CountUp(target, options.endVal, {
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+    ...options
+  });
+}
+
+metrics.forEach((metric) => {
+  createCountUpInstance(metric);
+});
+//code for dynamic counter ends here
